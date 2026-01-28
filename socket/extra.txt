@@ -1,0 +1,12 @@
+Emitting Socket Events From Anywhere (🔥 Big Advantage)
+import { getIO } from '../socket/index.js';
+
+export const notifyUser = userId => {
+  const io = getIO();
+  io.to(userId).emit('notification', { message: 'Hello!' });
+};
+
+
+Use rooms instead of socket IDs
+socket.join(socket.user.userId);
+io.to(socket.user.userId).emit(...)
