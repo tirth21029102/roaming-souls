@@ -5,12 +5,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const port = process.env.SERVER_PORT || 9000;
+const PORT = process.env.PORT || 9000;
 const server = http.createServer(app);
 
 // Initialize socket
 initSocket(server);
 
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
