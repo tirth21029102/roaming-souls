@@ -98,15 +98,15 @@ export const login = catchAsync(async (req, res, next) => {
 
   res.cookie('access_token', accessToken, {
     httpOnly: true,
-    secure: false,
-    sameSite: 'lax',
+    sameSite: 'none',
+    secure: true,
     maxAge: 60 * 1000,
   });
 
   res.cookie('refresh_token', refreshToken, {
     httpOnly: true,
-    secure: false,
-    sameSite: 'lax',
+    sameSite: 'none',
+    secure: true,
     maxAge: 15 * 60 * 1000,
   });
 
@@ -182,8 +182,8 @@ export const refreshToken = catchAsync(async (req, res, next) => {
 
     res.cookie('access_token', newAccessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
+      sameSite: 'none',
+      secure: true,
       maxAge: 60 * 1000,
     });
 
