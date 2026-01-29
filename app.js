@@ -22,31 +22,12 @@ const __dirname = path.dirname(__filename);
 const CLIENT_URL = process.env.CLIENT_URL;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// app.use(
-//   cors({
-//     origin: CLIENT_URL,
-//     credentials: true,
-//   }),
-// );
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // allow requests with no origin (Postman, mobile apps, server-to-server)
-      if (!origin) return callback(null, true);
-
-      if (origin === CLIENT_URL) {
-        return callback(null, true);
-      }
-
-      callback(new Error('Not allowed by CORS'));
-    },
+    origin: CLIENT_URL,
     credentials: true,
   }),
 );
-
-// 🔥 REQUIRED for preflight requests
-app.options('*', cors());
 
 app.use(express.json());
 app.use(cookieParser());
