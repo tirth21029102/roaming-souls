@@ -22,12 +22,22 @@ const __dirname = path.dirname(__filename);
 const CLIENT_URL = process.env.CLIENT_URL;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+const allowedOrigins = ['http://localhost:5173', CLIENT_URL];
+
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin: allowedOrigins,
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   }),
 );
+// app.use(
+//   cors({
+//     origin: CLIENT_URL,
+//     credentials: true,
+//   }),
+// );
 
 app.use(express.json());
 app.use(cookieParser());
