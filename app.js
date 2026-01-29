@@ -30,20 +30,39 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }),
-);
+// app.use(
+//   cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//   }),
+// );
 // app.use(
 //   cors({
 //     origin: CLIENT_URL,
 //     credentials: true,
 //   }),
 // );
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow non-browser requests (Postman, server-to-server)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.error('CORS blocked origin:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  }),
+);
+
+app.options('*', cors());
 
 app.use(express.json());
 app.use(cookieParser());
