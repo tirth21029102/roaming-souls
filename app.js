@@ -23,6 +23,12 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const allowedOrigins = ['http://localhost:5173', CLIENT_URL];
+console.log(allowedOrigins);
+
+app.use((req, res, next) => {
+  console.log('Incoming Origin:', req.headers.origin);
+  next();
+});
 
 app.use(
   cors({

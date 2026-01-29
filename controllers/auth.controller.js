@@ -101,6 +101,7 @@ export const login = catchAsync(async (req, res, next) => {
     sameSite: 'none',
     secure: true,
     maxAge: 60 * 1000,
+    path: '/',
   });
 
   res.cookie('refresh_token', refreshToken, {
@@ -108,6 +109,7 @@ export const login = catchAsync(async (req, res, next) => {
     sameSite: 'none',
     secure: true,
     maxAge: 15 * 60 * 1000,
+    path: '/',
   });
 
   res.status(200).json({
@@ -185,6 +187,7 @@ export const refreshToken = catchAsync(async (req, res, next) => {
       sameSite: 'none',
       secure: true,
       maxAge: 60 * 1000,
+      path: '/',
     });
 
     res.status(200).json({
