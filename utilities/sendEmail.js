@@ -17,7 +17,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (email, otp) => {
   try {
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: 'Tirth Tourism <onboarding@resend.dev>',
       to: [email],
       subject: 'Verify Your Email – Tirth Tourism',
@@ -101,6 +101,8 @@ export const sendOTPEmail = async (email, otp) => {
 
       // html: `<h1> ${otp}</h1>`,
     });
+    console.log('Resend result:', result);
+    console.log('sending email on :', email);
   } catch (err) {
     console.log(err);
   }
