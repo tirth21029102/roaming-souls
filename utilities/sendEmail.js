@@ -18,7 +18,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendOTPEmail = async (email, otp) => {
   try {
     await resend.emails.send({
-      from: `"Tirth Tourism" <${process.env.SMTP_USER}>`,
+      from: 'Tirth Tourism <onboarding@resend.dev>',
       to: [email],
       subject: 'Verify Your Email – Tirth Tourism',
       html: `
