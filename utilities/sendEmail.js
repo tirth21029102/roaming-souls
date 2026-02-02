@@ -11,6 +11,7 @@ export const transporter = nodemailer.createTransport({
 });
 
 export const sendOTPEmail = async (email, otp) => {
+  console.log('ok i am inside send otp email at starting of the function');
   await transporter.sendMail({
     from: `"Tirth Tourism" <${process.env.SMTP_USER}>`,
     to: email,
@@ -93,4 +94,5 @@ export const sendOTPEmail = async (email, otp) => {
       </div>
     `,
   });
+  console.log('ok i am inside send otp email at ending of the function');
 };

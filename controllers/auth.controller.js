@@ -52,7 +52,7 @@ export const signup = catchAsync(async (req, res, next) => {
     hashedOtp,
     otpExpiry,
   );
-
+  console.log(result);
   if (!result) {
     console.log('am I inside failed to create user ?');
     return next(new AppError('Failed to create user', 500));
