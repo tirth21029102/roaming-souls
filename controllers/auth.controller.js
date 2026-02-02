@@ -100,7 +100,7 @@ export const login = catchAsync(async (req, res, next) => {
     httpOnly: true,
     sameSite: 'none',
     secure: true,
-    maxAge: 60 * 1000,
+    maxAge: 10 * 60 * 1000,
     path: '/',
   });
 
@@ -108,7 +108,7 @@ export const login = catchAsync(async (req, res, next) => {
     httpOnly: true,
     sameSite: 'none',
     secure: true,
-    maxAge: 15 * 60 * 1000,
+    maxAge: 60 * 60 * 1000,
     path: '/',
   });
 
