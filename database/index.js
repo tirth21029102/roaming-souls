@@ -1,6 +1,4 @@
-import dotenv from 'dotenv';
 import { pool } from './pool.js';
-dotenv.config();
 
 export const getAllCitiesInfo = async () => {
   const [rows] = await pool.query('SELECT * FROM cities;');
@@ -65,7 +63,6 @@ export const insertNewUser = async (n, e, p, i, i_p, otp, otp_expiry) => {
     'INSERT INTO users (user_name , email , password_hash , imageName , image_path,email_otp,otp_expires_at) VALUES ( ? , ? , ? , ? , ? , ? , ? )',
     [n, e, p, i, i_p, otp, otp_expiry],
   );
-  console.log(rows);
   return rows;
 };
 

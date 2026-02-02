@@ -32,7 +32,6 @@ const INVALID_CREDENTIALS_MSG = 'Invalid email or password';
 export const signup = catchAsync(async (req, res, next) => {
   const { name, email, password } = req.body;
   const file = req.file;
-  console.log('hi i am pranav');
   if (!name || !email || !password || !file) {
     return next(
       new AppError('Please provide name, email, password and image', 400),
@@ -55,6 +54,7 @@ export const signup = catchAsync(async (req, res, next) => {
   );
 
   if (!result) {
+    console.log('am I inside failed to create user ?');
     return next(new AppError('Failed to create user', 500));
   }
 
