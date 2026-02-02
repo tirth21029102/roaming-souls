@@ -13,12 +13,13 @@
 //   },
 // });
 import { Resend } from 'resend';
-const resend = new Resend(process.env.RESEND_API_KEY);
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+console.log(process.env.RESEND_API_KEY);
 export const sendOTPEmail = async (email, otp) => {
   try {
     const result = await resend.emails.send({
-      from: 'Tirth Tourism <onboarding@resend.dev>',
+      from: 'Tirth Tourism <no-reply@tirthtourism.com>',
       to: [email],
       subject: 'Verify Your Email – Tirth Tourism',
       html: `
